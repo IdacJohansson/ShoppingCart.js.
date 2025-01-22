@@ -13,39 +13,37 @@ interface productInterface {
 }
 
 // Step 2: Create a list of products (using plain objects)
-const products = [
+const products: productInterface[] = [
   { id: 1, name: "Laptop", price: 999.99, category: Categories.Electronics },
   { id: 2, name: "T-Shirt", price: 19.99, category: Categories.Groceries },
   { id: 3, name: "Bananas", price: 1.99, category: Categories.Clothing },
 ];
 
-console.log(products);
-
 // Step 3: Create a shopping cart (initially empty)
-let shoppingCart = [];
+let shoppingCart: productInterface[] = [];
 
 // Step 4: Function to add a product to the cart (using arrow function)
-const addToCart = (product) => {
+const addToCart = (product: productInterface): void => {
   shoppingCart.push(product);
   console.log(`${product.name} has been added to your cart.`);
 };
 
 // Step 5: Function to calculate the total price of the cart (using arrow function)
-const calculateTotal = (cart) => {
-  let total = 0;
+const calculateTotal = (cart: productInterface[]): string => {
+  let total: number = 0;
   cart.forEach((item) => (total += item.price));
   return total.toFixed(2);
 };
 
 // Step 6: Function to display the cart contents (using arrow function)
-const displayCart = (cart) => {
+const displayCart = (cart: productInterface[]): void => {
   if (cart.length === 0) {
     console.log("Your cart is empty.");
     return;
   }
 
   console.log("Your cart contains:");
-  cart.forEach((item) => {
+  cart.forEach((item: productInterface) => {
     console.log(`- ${item.name} (${item.category}): $${item.price}`);
   });
   console.log(`Total: $${calculateTotal(cart)}`);
